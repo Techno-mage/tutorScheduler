@@ -1,0 +1,25 @@
+{
+  "name": "tutorscheduler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Techno-mage/tutorScheduler.git"
+  },
+  "author": "Erik Schaal, Kent Schollmeier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Techno-mage/tutorScheduler/issues"
+  },
+  "homepage": "https://github.com/Techno-mage/tutorScheduler#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.3"
+  }
+}
