@@ -32,6 +32,10 @@ module.exports = function(sequelize, DataTypes) {
     User.hasOne(models.Student, {
       onDelete: "cascade"
     })
+
+    User.hasOne(models.Tutor, {
+      onDelete: "cascade"
+    })
   }
 
 
