@@ -23,7 +23,10 @@ module.exports = function(app) {
     });
 
     app.get("/api/Tutors", function(req, res) {
-        db.Tutor.findAll({}).then(function(dbTutor) {
+        db.Tutor.findAll({
+            attributes: [ "tutorProfile"],
+            include: [{model:db.User, attributes: ["firstName","lastName","Email"]}]
+        }).then(function(dbTutor) {
             res.json(dbTutor)
         })
     
@@ -31,9 +34,11 @@ module.exports = function(app) {
 
     app.get("/api/:Tutor?", function(req, res) {
         db.Tutor.findOne({
+
             where: {
                 id: req.params.Tutor
-            }
+            },
+            include: [db.User]
         }).then(function(dbTutor) {
             res.json(dbTutor)
         })

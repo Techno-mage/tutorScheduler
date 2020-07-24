@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Tutor = sequelize.define("Tutor", {
-      profile: DataTypes.STRING
+      tutorProfile: DataTypes.TEXT
 
     });
 
