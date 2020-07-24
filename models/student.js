@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Student = sequelize.define("Student", {
-      profile: DataTypes.STRING
+      studentProfile: DataTypes.TEXT
 
     });
 
@@ -10,7 +10,11 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         })
+        Student.hasMany(models.Session, {
+
+        })
     }
+    
     return Student;
   };
   

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Tutor = sequelize.define("Tutor", {
-      profile: DataTypes.STRING
+      tutorProfile: DataTypes.TEXT
 
     });
 
@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: {
                 allowNull: false
             }
+        })
+
+        Tutor.hasMany(models.Session, {
+            onDelete: "cascade"
         })
     }
     return Tutor;
