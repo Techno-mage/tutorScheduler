@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         })
+
+        Tutor.hasMany(models.Session, {
+            onDelete: "cascade"
+        })
     }
     return Tutor;
   };

@@ -31,8 +31,7 @@ module.exports = function(app) {
         })
     
     })
-
-    app.get("/api/:Tutor?", function(req, res) {
+    app.get("/api/tutors/:Tutor?", function(req, res) {
         db.Tutor.findOne({
 
             where: {

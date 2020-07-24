@@ -10,7 +10,11 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         })
+        Student.hasMany(models.Session, {
+
+        })
     }
+    
     return Student;
   };
   
