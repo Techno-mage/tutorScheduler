@@ -43,6 +43,24 @@
             <span class="sr-only">Error:</span> <span class="msg"></span>
           </div>
           <br>
+          <div class="form-check">
+            <label class="form-check-label">
+            <input type="checkbox" class="form-check-input check" name="" id="tutorCheck" value="checkedValue" unchecked onclick="$('#studentCheck').prop('checked', false); $('#bothCheck').prop('checked', false)">
+              I am a Tutor
+            </label>
+            <br>
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input check" name="" id="studentCheck" value="checkedValue" unchecked onclick="$('#tutorCheck').prop('checked', false); $('#bothCheck').prop('checked', false)">
+              I am a Student
+            </label>
+            <br>
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input check" name="" id="bothCheck" value="checkedValue" unchecked onclick="$('#studentCheck').prop('checked', false); $('#tutorCheck').prop('checked', false)">
+              I am Both
+            </label>
+            <br>
+            <br>
+          </div>
             
           
           <button type="submit" class="btn btn-default">Sign Up</button>
@@ -52,6 +70,7 @@
       </div>
     </div>
   </div>
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/signup.js"></script>

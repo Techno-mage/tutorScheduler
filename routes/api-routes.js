@@ -26,6 +26,7 @@ module.exports = function(app) {
       .catch(function(err) {
         res.status(401).json(err);
       });
+    
   });
 
   // Route for logging user out
@@ -48,6 +49,19 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.get("/api/users/:User?", function(req, res){
+      db.User.findOne({
+
+        where: {
+          firstName: req.params.User
+        }
+        
+      }).then(function(dbUser){
+        res.json(dbUser)
+      })
+
+  })
 
   
 
