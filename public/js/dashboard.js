@@ -3,8 +3,12 @@ $(document).ready(function () {
     console.log(data)
     $("#student").val(data.Student.id)
     $("#studentProfile").val(data.Student.studentProfile)
+    $(".display-3").text(data.firstName + " " + data.lastName)
   })
+  
 
+  
+    
 
 
 
@@ -31,7 +35,6 @@ function saveProfile() {
     method:"PUT",
     url:"/api/updateStudentProfile",
     data: {id:parseInt($("#student").val()), profile:$("#studentProfile").val()}
-    
   })
   //$.put("/api/updateStudentProfile", {id:$("#student").val(), profile:$("#studentProfile").text()})
   .then(data => {
@@ -39,6 +42,29 @@ function saveProfile() {
   })
 
 }
+
+
+
+  function saveSession(start){
+      $.get("/api/user_data").then(function(data){
+        $.get("/api/tutorByUId/"+data.id).then(function(datas){
+            console.log(datas.id);
+            $.post("/api/createSession", {
+                
+                TutorId: datas.id,
+                startTime: $("#start").val().trim()+" "+$("#time").val().trim()+":00"
+            }).then(function(data){
+                console.log(data);
+            })
+            //.catch(err)
+      })
+    })
+    console.log($("#start").val())
+    console.log($("#time").val())
+   
+}
+  
+  
 
 function openTab(tabName, other) {
   document.getElementById(other).style.display = "none";

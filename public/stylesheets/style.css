@@ -4,9 +4,11 @@ form.login {
 }
 #tutor {
   display: block;
+  margin:auto;
 }
 #student {
   display: none;
+  margin:auto;
 }
 #navId {
   background-color: black;
@@ -28,4 +30,54 @@ form.login {
 }
 .button:hover {
   background-color: darkgray;
+}
+#contentPanel{
+  margin:auto;
+}
+.jumbotron{
+  left:10%;
+  right:10%;
+  position:fixed;
+}
+.session{
+  border-style: solid;
+  
+  border-color: black;
+  
+  
+}
+.addBut{
+  
+  float:right;
+  background-color: brown;
+}
+.descpt{
+  width:50%;
+  left:25%;
+  border-color: black;
+  
+  
+}
+.display-3{
+  text-align: center;
+}
+.card-title{
+  text-align:center;
+}
+label {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+  margin: .4rem 0;
+}
+
+.modal-input{
+  width:75%;
+  margin-left:10%;
+}
+.modal-label{
+  margin-left: 8%;
 }

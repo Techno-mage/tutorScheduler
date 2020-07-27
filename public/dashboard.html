@@ -31,9 +31,36 @@
       
       
       <div class="tab-content">
-        <div class="tab-pane row" id="tutor" role="tabpanel">
-          <div>Display the Tutor's profile, and allow the tutor to edit if necessary.</div>
-          <div>Display the sessions that the Tutor is tutoring. Allow the tutor to add new sessions.</div>
+        <div class="tab-pane" id="tutor" role="tabpanel">
+          <!-- <div>Display the Tutor's profile, and allow the tutor to edit if necessary.</div>
+          <div>Display the sessions that the Tutor is tutoring. Allow the tutor to add new sessions.</div> -->
+          
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h3 class="display-3">Tutor</h3>
+              
+              <hr class="my-2">
+
+              <div class="card descpt">
+                <h6 class="card-title"><u>Description</u></h6>
+                <div class="card-body">
+                  
+                  
+                  <p class="card-text"></p>
+                </div>
+              </div>
+              <br>
+              <p><b>Your Upcoming Sessions:</b></p>
+              <hr>
+              <div class="row" id="contentPanel">
+
+              </div>
+              <button type="button" class="btn btn-primary btn-lg addBut" data-toggle="modal" data-target="#modelId">
+                Add Session
+              </button>
+
+            </div>
+          </div>
           
 
         </div>
@@ -56,8 +83,40 @@
         </div>
       </div>
       
+      <!-- Button trigger modal -->
       
+      
+      <!-- Modal -->
+      <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add a Session</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <label class="modal-label" for="start">Session date:</label>
+
+            <input class="modal-input" type="date" id="start" 
+            
+            min="2020-01-01" max="2025-12-31">
+            <label class="modal-label" for="appt">Start Time:</label>
+
+            <input class="modal-input" type="time" id="time" 
+            min="00:00" max="24:00" required>
+
+            
+          
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="saveSession('2020-07-27 15:00:00')">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
     
+      <!--onclick="saveSession('2020-07-27 15:00:00')"-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
   src="https://code.jquery.com/jquery-3.5.1.js"
