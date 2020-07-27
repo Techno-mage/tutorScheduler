@@ -43,6 +43,19 @@ module.exports = function(app) {
         })
     
     })
+
+    app.get("/api/tutorByUId/:Tutor?", function(req, res) {
+      db.Tutor.findOne({
+
+          where: {
+              UserId: req.params.Tutor
+          },
+          include: [db.User]
+      }).then(function(dbTutor) {
+          res.json(dbTutor)
+      })
+  
+  })
     
 
 

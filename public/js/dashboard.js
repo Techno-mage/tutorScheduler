@@ -2,21 +2,50 @@ $(document).ready(function() {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
     $.get("/api/getSessions").then(function(data) {
-    
-    for (var i=0;i<=data.length;i++) {
+    console.log(data.length);
+    for (var i=0;i<=(data.length-1);i++) {
         var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
         var myPanel = $('<div class="card card-outline-info session" id="'+i+'Panel"><div class="card-block"><div class="card-title"><span><b>Tutor:</b> '+data[i].Tutor.User.firstName+' '+data[i].Tutor.User.lastName+'</span></div><p><b>Start Time:</b> '+sqlToJsDate(data[i].startTime)+' </p><p><b>Session Details:</b> '+ data[i].sessionDetails+'</p></div></div>');
         myPanel.appendTo(myCol);
         myCol.appendTo('#contentPanel');
     }
+})
+
 
     
     
-      
 
-    });
-  });
 
+
+    
+
+    $.get("/api/user_data").then(function(data){
+        $(".display-3").text(data.firstName + " " + data.lastName)
+    })
+
+
+
+
+
+})
+
+
+  function saveSession(start){
+      $.get("/api/user_data").then(function(data){
+        $.get("/api/tutorByUId/"+data.id).then(function(datas){
+            console.log(datas.id);
+            $.post("/api/createSession", {
+                
+                TutorId: datas.id,
+                startTime: start
+            }).then(function(data){
+                console.log(data);
+            })
+            //.catch(err)
+      })
+    })
+   
+}
   function openTab(tabName, other) {
     document.getElementById(other).style.display = "none";
     
