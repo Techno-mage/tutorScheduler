@@ -17,9 +17,9 @@ module.exports = function(app) {
             ]
         })
         .then(function(dbSession) {
-            console.log(dbSession)
-            let tutorName = dbSession.tutor.User.firstName + " " + dbSession.tutor.User.lastName;
-            let studentName = "";
+            //console.log(dbSession)
+            //let tutorName = dbSession.tutor.User.firstName + " " + dbSession.tutor.User.lastName;
+            //let studentName = "";
             /*res.json({
                 tutorName,
                 studentName

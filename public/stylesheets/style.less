@@ -1,0 +1,48 @@
+@nav-color: black;
+@nav-active: darkgray;
+@nav-hover: darkgray;
+
+@main-text: "Times new roman", "Times", "serif";
+@secondary-text: "Arial", "san-serif";
+
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+#tutor{
+  display: block;
+  
+
+}
+#student{
+  display: none;
+  
+}
+#navId{
+  background-color: @nav-color;
+  height:60px;
+  
+}
+.headertext{
+    font-family: @main-text;
+}
+
+.article{
+    font-family: @secondary-text;
+}
+.button{
+  transition-duration: 0.4s;
+  cursor: pointer;
+  height:58px;
+  width:100px;
+  color: white;
+  background-color: @nav-color;
+
+  &:hover{
+    background-color: @nav-hover;
+  }
+
+}
+
+
+
