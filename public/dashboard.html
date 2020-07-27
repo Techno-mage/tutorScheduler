@@ -67,7 +67,13 @@
 
         
         <div class="tab-pane row" id="student"  role="tabpanel">
-          <div>Display student profile and allow student to update if necessary.</div>
+          <div>Display student profile and allow student to update if necessary.
+            <form>
+              <textarea name="message" rows="10" cols="30" id="studentProfile"></textarea>
+              <br><br>
+              <input type="submit" onclick="saveProfile()">
+            </form>
+          </div>
           <div>Display sessions that the student is signed up for.</div>
           <div>A list of Tutor's and their available sessions. </div>
 
