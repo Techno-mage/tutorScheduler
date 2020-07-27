@@ -85,14 +85,23 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+              <h5 class="modal-title">Add a Session</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-              Body
-            </div>
+            <label class="modal-label" for="start">Session date:</label>
+
+            <input class="modal-input" type="date" id="start" 
+            
+            min="2020-01-01" max="2025-12-31">
+            <label class="modal-label" for="appt">Start Time:</label>
+
+            <input class="modal-input" type="time" id="time" 
+            min="00:00" max="24:00" required>
+
+            
+          
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary">Save</button>
@@ -100,6 +109,7 @@
           </div>
         </div>
       </div>
+    
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

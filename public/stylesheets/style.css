@@ -64,3 +64,20 @@ form.login {
 .card-title{
   text-align:center;
 }
+label {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+  margin: .4rem 0;
+}
+
+.modal-input{
+  width:75%;
+  margin-left:10%;
+}
+.modal-label{
+  margin-left: 8%;
+}
