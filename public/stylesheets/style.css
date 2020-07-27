@@ -2,3 +2,39 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+#tutor{
+  display: block;
+  
+
+}
+#student{
+  display: none;
+  
+}
+#navId{
+  background-color: black;
+  height:60px;
+  
+}
+
+.button{
+  transition-duration: 0.4s;
+  cursor: pointer;
+  height:58px;
+  width:100px;
+  color: white;
+}
+.button:hover {
+  background-color: chocolate;
+}
+.studButton{
+  background-color: black;
+  border:none;
+  
+}
+.tutButton{
+  background-color:#999995;
+  border:none;
+  margin-left: 50px;
+  
+}

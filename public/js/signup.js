@@ -70,7 +70,7 @@ $(document).ready(function() {
       $.post("/api/createTutor", {
         UserId: data.id
       }).then(function(data) {
-        window.location.replace("/members");
+        window.location.replace("/dashboard");
         
         // If there's an error, handle it by throwing up a bootstrap alert
       })
@@ -84,7 +84,7 @@ $(document).ready(function() {
       $.post("/api/createStudent", {
         UserId: data.id
       }).then(function(data) {
-        window.location.replace("/members");
+        window.location.replace("/dashboard");
         
         // If there's an error, handle it by throwing up a bootstrap alert
       })
@@ -109,7 +109,7 @@ $(document).ready(function() {
 
           }).then(function(data) {
            
-            window.location.replace("/members");
+            window.location.replace("/dashboard");
             
             // If there's an error, handle it by throwing up a bootstrap alert
           })
