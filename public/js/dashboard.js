@@ -5,10 +5,12 @@ $(document).ready(function() {
     
     for (var i=0;i<=data.length;i++) {
         var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
-        var myPanel = $('<div class="card card-outline-info" id="'+i+'Panel"><div class="card-block"><div class="card-title"><span><b>Tutor:</b> '+data[i].Tutor.User.firstName+' '+data[i].Tutor.User.lastName+'</span></div><p><b>Start Time:</b> '+sqlToJsDate(data[i].startTime)+' </p><p><b>Session Details:</b> '+ data[i].sessionDetails+'</p></div></div>');
+        var myPanel = $('<div class="card card-outline-info session" id="'+i+'Panel"><div class="card-block"><div class="card-title"><span><b>Tutor:</b> '+data[i].Tutor.User.firstName+' '+data[i].Tutor.User.lastName+'</span></div><p><b>Start Time:</b> '+sqlToJsDate(data[i].startTime)+' </p><p><b>Session Details:</b> '+ data[i].sessionDetails+'</p></div></div>');
         myPanel.appendTo(myCol);
-        myCol.appendTo('#tutor');
+        myCol.appendTo('#contentPanel');
     }
+
+    
     
       
 
