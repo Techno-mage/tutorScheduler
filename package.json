@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stylec": "lessc ./public/stylesheets/style.less ./public/stylesheets/style.css"
   },
   "repository": {
     "type": "git",

@@ -8,13 +8,59 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="stylesheets/style.css" rel="stylesheet">
   </head>
   <body>
-      b4-
-    <!-- Optional JavaScript -->
+    <h1 style="font-size: 50px; text-align: center;" class="display-1"><a class="navbar-brand" href="/logout">
+      Logout
+    </a>Tutoring Services</h1>
+     
+    
+    
+      <ul class="nav nav-tabs" id="navId">
+        <li class="w3-bar w3-black">
+          <button class="w3-bar-item w3-button button tutButton" id="tutorButton" onclick="openTab('tutor', 'student')">Tutor</button>
+        </li>
+        
+           
+        <li class="nav-item">
+          <button class="w3-bar-item w3-button button studButton" id="studentButton" onclick="openTab('student', 'tutor')">Student</button>
+        </li>
+        
+      </ul>
+      
+      
+      <div class="tab-content">
+        <div class="tab-pane row" id="tutor" role="tabpanel">
+          <div>Display the Tutor's profile, and allow the tutor to edit if necessary.</div>
+          <div>Display the sessions that the Tutor is tutoring. Allow the tutor to add new sessions.</div>
+          
+
+        </div>
+
+        
+        <div class="tab-pane row" id="student"  role="tabpanel">
+          <div>Display student profile and allow student to update if necessary.</div>
+          <div>Display sessions that the student is signed up for.</div>
+          <div>A list of Tutor's and their available sessions. </div>
+
+          
+          
+
+        </div>
+      </div>
+      
+      
+    
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>  
+    
+   
   </body>
 </html>
