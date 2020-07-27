@@ -12,7 +12,7 @@ module.exports = function(app) {
         // Update takes in an object describing the properties we want to update, and
         // we use where to describe which objects we want to update
         db.Tutor.update({
-          profile: req.body.profile
+          tutorProfile: req.body.profile
         }, {
           where: {
             id: req.body.id
