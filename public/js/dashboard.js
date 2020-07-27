@@ -37,13 +37,15 @@ $(document).ready(function() {
             $.post("/api/createSession", {
                 
                 TutorId: datas.id,
-                startTime: start
+                startTime: $("#start").val().trim()+" "+$("#time").val().trim()+":00"
             }).then(function(data){
                 console.log(data);
             })
             //.catch(err)
       })
     })
+    console.log($("#start").val())
+    console.log($("#time").val())
    
 }
   function openTab(tabName, other) {
