@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "stylec": "lessc ./public/stylesheets/style.less ./public/stylesheets/style.css"
+    "stylec": "lessc ./public/stylesheets/style.less ./public/stylesheets/style.css",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,14 +17,12 @@
   "bugs": {
     "url": "https://github.com/Techno-mage/tutorScheduler/issues"
   },
-  "homepage": "https://github.com/Techno-mage/tutorScheduler#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
