@@ -46,13 +46,18 @@
                 <div class="card-body">
                   
                   
-                  <p class="card-text"></p>
+                  <textarea class="card-text " name="message" rows="10" cols="30" id="tutorProfile"></textarea>
+                  
                 </div>
-              </div>
+                <button type="button" class="btn btn-primary" onclick="saveTutorProfile()">update Profile</button>
+              </div> 
+              
               <br>
               <p><b>Your Upcoming Sessions:</b></p>
               <hr>
-              <div class="row" id="contentPanel">
+              <div class="row card-columns" id="contentPanel">
+                
+               
 
               </div>
               <button type="button" class="btn btn-primary btn-lg addBut" data-toggle="modal" data-target="#modelId">
@@ -74,8 +79,34 @@
               <input type="submit" onclick="saveProfile()">
             </form>
           </div>
-          <div>Display sessions that the student is signed up for.</div>
+          <p><b>Your Upcoming Sessions:</b></p>
+          <hr>
+            <div class="row card-columns" id="StudentContent">
+
+            </div>
           <div>A list of Tutor's and their available sessions. </div>
+
+          <div id="availableTutors">
+            <div class="row card card-body">
+              <div class="col-sm-3 col-md-3">
+                <p>Tutor: Tutor name here</p>
+                <p>Tutor Profile Here.</p>
+              </div>
+              <div class="col-sm-9 col-md-9">
+                <button class="button btn btn-primary ">
+                  Start time:
+                </button>
+                <button class="button btn btn-primary ">
+                  Start time:
+                </button>
+                <button class="button btn btn-primary ">
+                  Start time:
+                </button>
+              </div>
+
+            </div>
+
+          </div>
 
           
           
@@ -110,13 +141,39 @@
           
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="saveSession('2020-07-27 15:00:00')">Save</button>
+              <button type="button" class="btn btn-primary" onclick="saveSession()" data-dismiss="modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+      
+      <!-- Modal -->
+      <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Session Sign Up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              Sesson Details: 
+              <textarea id="signUpDetails"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary"  onclick="sessionSignup()" data-dismiss="modal" >Save</button>
             </div>
           </div>
         </div>
       </div>
     
-      <!--onclick="saveSession('2020-07-27 15:00:00')"-->
+      
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
   src="https://code.jquery.com/jquery-3.5.1.js"
