@@ -283,7 +283,10 @@ function sqlToJsDate(sqlDate) {
   //format of sqlDateArr4[] = ['ss','msZ']
   var sSecond = sqlDateArr4[0];
   //var sMillisecond = sqlDateArr4[1];
+  var ddate = new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond);
+  ddate.setTime(ddate.getTime() - (ddate.getTimezoneOffset()*60*1000))
+  //console.log(ddate)
 
-  return new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond);
+  return ddate;
 }
 
