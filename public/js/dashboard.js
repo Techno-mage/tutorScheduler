@@ -97,45 +97,7 @@ $(document).ready(async function () {
 
   //Get available tutors. 
   $.get("/api/Tutors").then( data => {
-<<<<<<< HEAD
-    //   console.log(data);
-    // for (tutor of data){
-    //     //console.log(tutor.User.firstName)
-    // var text;
-      
-    //   text = `Tutor: ${tutor.User.firstName} ${tutor.User.lastName}
-        
-    //     Profile:
-    //     ${tutor.tutorProfile}`
-    //     var car = $("<button>").addClass("btn btn-primary col-sm-3 col-md-3");
-    //     car.click(()=> {$('#tutorSes').val(tutor.id).modal()
-    //     console.log($("#tutorSes").val())
-    //     //$("#sesTitle").text(tutor.User.firstName+ " "+tutor.User.lastName)
-
-    //     $.get("/api/getTutorSessions/" + tutor.id).then(data => {
-
-    //         var available = data.filter(s=> {return s.Student === null})
-            
-
-    
-    
-    //       })
-    
-    
-    //     })
-        
-    //     //car.attr("tutorId", tutor.id);
-      
-    //   var details = $("<p>").text(text);
-    //   var body = $("<div>").addClass("card-body");
-    //   body.append(details)
-    //   car.append(body)
-    //   $("#availableTutors").append(car)
-
-    // }
-=======
      
->>>>>>> 84253cb95f2a86b75b182478a97f75a1a092c857
     console.log(data)
 
     for (tutor of data){
