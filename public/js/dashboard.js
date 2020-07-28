@@ -3,18 +3,38 @@
 $(document).ready(async function () {
   await $.get("api/user_data").then(data => {
     //console.log(data)
-    if (data.Student){
+    if (data.Student && !data.Tutor){
       $("#student").val(data.Student.id)
       $("#studentProfile").val(data.Student.studentProfile)
+      $(".display-4").text(data.firstName + " " + data.lastName)
+      $(".descpt").empty();
+      $("#upSession").empty();
+      $(".descpt").append($("<button>").addClass("btn btn-primary").text("Become a Tutor."))
     }
     
-    //console.log(data.Tutor.id)
-    if (data.Tutor){
+    //console.log(data.User.Tutor.id)
+    else if (data.Tutor && !data.Student){
+        
       $("#tutor").val(data.Tutor.id)
+      
       $("#tutorProfile").val(data.Tutor.tutorProfile)
+      $(".display-3").text(data.firstName + " " + data.lastName)
+      $(".stuDescpt").empty();
+      $("#upStuSession").empty();
+      
+    }
+
+    else if (data.Student && data.tutor){
+        $("#student").val(data.Student.id)
+        $("#studentProfile").val(data.Student.studentProfile)
+        $(".display-4").text(data.firstName + " " + data.lastName)
+        $("#tutor").val(data.Tutor.id)
+      
+        $("#tutorProfile").val(data.Tutor.tutorProfile)
+        $(".display-3").text(data.firstName + " " + data.lastName)
     }
     
-    $(".display-3").text(data.firstName + " " + data.lastName)
+    
   })
 
   // This file just does a GET request to figure out which user is logged in
@@ -52,18 +72,18 @@ $(document).ready(async function () {
   $.get("/api/getStudentSessions/" + $("#student").val()).then(data => {
     for (session of data){
       //Start time
-      var time = sqlToJsDate(session.startTime);
+      var time = sqlToJsDate(session.startTime).toLocaleString();
       //if (!student) available
       var text;
       
       text = `Tutor: ${session.Tutor.User.firstName} ${session.Tutor.User.lastName}
         
-        Session description
+        Session description:
         ${session.sessionDetails}`
       
       //else display student name and session description. 
       var car = $("<div>").addClass("card col-sm-3 col-md-3");
-      var stime = $("<p>").text("session time: "+time);
+      var stime = $("<p>").text("session time:"+time);
       var details = $("<p>").text(text);
       var body = $("<div>").addClass("card-body").append(stime);
       body.append(details)
@@ -75,7 +95,45 @@ $(document).ready(async function () {
 
   //Get available tutors. 
   $.get("/api/Tutors").then( data => {
-    //console.log(data)
+    //   console.log(data);
+    // for (tutor of data){
+    //     //console.log(tutor.User.firstName)
+    // var text;
+      
+    //   text = `Tutor: ${tutor.User.firstName} ${tutor.User.lastName}
+        
+    //     Profile:
+    //     ${tutor.tutorProfile}`
+    //     var car = $("<button>").addClass("btn btn-primary col-sm-3 col-md-3");
+    //     car.click(()=> {$('#tutorSes').val(tutor.id).modal()
+    //     console.log($("#tutorSes").val())
+    //     //$("#sesTitle").text(tutor.User.firstName+ " "+tutor.User.lastName)
+
+    //     $.get("/api/getTutorSessions/" + tutor.id).then(data => {
+
+    //         var available = data.filter(s=> {return s.Student === null})
+            
+
+    
+    
+    //       })
+    
+    
+    //     })
+        
+    //     //car.attr("tutorId", tutor.id);
+      
+    //   var details = $("<p>").text(text);
+    //   var body = $("<div>").addClass("card-body");
+    //   body.append(details)
+    //   car.append(body)
+    //   $("#availableTutors").append(car)
+
+      
+      
+
+    // }
+    console.log(data)
 
     for (tutor of data){
       var tutorData = $("<div>").addClass("col-sm-3 col-md-3").html(`<p>Tutor: ${tutor.User.firstName} + ${tutor.User.lastName}</p>
@@ -85,9 +143,9 @@ $(document).ready(async function () {
       $.get("/api/getTutorSessions/" + tutor.id).then(data => {
         var available = data.filter(s=> {return s.Student === null})
         //console.log(available)
-        sessions = $("<div>").addClass("col-sm-9 col-md-9");
+        sessions = $("<div>").addClass("card col-sm-3 col-md-3");
         available.forEach(e => {
-          sessions.append($("<button>").addClass("btn btn-primary").text(sqlToJsDate(e.startTime))
+          sessions.append($("<button>").addClass("btn btn-primary").text(sqlToJsDate(e.startTime).toLocaleString())
           
           .click(()=> {$('#signUp').val(e.id).modal()
             console.log(e.id)
@@ -141,6 +199,7 @@ function listAvailableSession(TutorId){
 
 function saveProfile() {
   event.preventDefault()
+  console.log("happening")
   console.log($("#student").val() +$("#studentProfile").val())
   $.ajax({
     method:"PUT",
