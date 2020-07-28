@@ -1,4 +1,4 @@
-# tutorScheduler
+# tutorScheduler 
 
 *  An app for allowing tutor's to post availablity, and for students to sign up for available sessions. 
 
@@ -13,4 +13,8 @@ Everyone needs help on their assignments from time to time. We decided to create
 
 
 
-<img src="images/Screenshot_tutorSchedular.png" >
+<img src="images/Screenshot_tutorSchedular.png">
+
+## deployed application
+
+https://secret-coast-84515.herokuapp.com/
