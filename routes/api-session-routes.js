@@ -10,7 +10,8 @@ module.exports = function(app) {
 
     app.get("/api/getSessions", function(req, res) {
         db.Session.findAll({
-            attributes: ["startTime", "sessionDetails"],
+            //attributes: ["startTime", "sessionDetails"],
+            order: [["startTime", "ASC"]],
             include: [
                 {model:db.Tutor,  include: [{model:db.User, attributes: ["firstName", "lastName"]}]},
                 {model:db.Student, include: [{model:db.User, attributes: ["firstName", "lastName"]}]}
@@ -43,6 +44,46 @@ module.exports = function(app) {
         });
     })
 
+    app.get("/api/getTutorSessions/:Tutor?", function(req, res){
+        console.log("triggered")
+        db.Session.findAll({
+
+        //attributes: ["startTime", "sessionDetails"],
+        order: [["startTime", "ASC"]],
+        include: [
+                {model:db.Tutor,  include: [{model:db.User, attributes: ["firstName", "lastName"]}]},
+                {model:db.Student, include: [{model:db.User, attributes: ["firstName", "lastName"]}]}
+            ],
+  
+          where: {
+            TutorId: req.params.Tutor
+          }
+          
+        }).then(function(dbTutor){
+          res.json(dbTutor)
+        })
+  
+    })
+
+    app.get("/api/getStudentSessions/:Student?", function(req, res){
+        console.log("triggered")
+        db.Session.findAll({
+            attributes: ["startTime", "sessionDetails"],
+            order: [["startTime", "ASC"]],
+            include: [
+                {model:db.Tutor,  include: [{model:db.User, attributes: ["firstName", "lastName"]}]},
+                {model:db.Student, include: [{model:db.User, attributes: ["firstName", "lastName"]}]}
+            ],
+  
+          where: {
+            StudentId: req.params.Student
+          }
+          
+        }).then(function(dbTutor){
+          res.json(dbTutor)
+        })
+  
+    })
   
     
 

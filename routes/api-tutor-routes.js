@@ -24,7 +24,7 @@ module.exports = function(app) {
 
     app.get("/api/Tutors", function(req, res) {
         db.Tutor.findAll({
-            attributes: [ "tutorProfile"],
+            //attributes: [ "tutorProfile"],
             include: [{model:db.User, attributes: ["firstName","lastName","Email"]}]
         }).then(function(dbTutor) {
             res.json(dbTutor)
