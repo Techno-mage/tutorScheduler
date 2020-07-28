@@ -24,7 +24,7 @@ $(document).ready(async function () {
       
     }
 
-    else if (data.Student && data.tutor){
+    else if (data.Student && data.Tutor){
         $("#student").val(data.Student.id)
         $("#studentProfile").val(data.Student.studentProfile)
         $(".display-4").text(data.firstName + " " + data.lastName)
@@ -129,21 +129,23 @@ $(document).ready(async function () {
     //   car.append(body)
     //   $("#availableTutors").append(car)
 
-      
-      
-
     // }
     console.log(data)
 
     for (tutor of data){
       var tutorData = $("<div>").addClass("col-sm-3 col-md-3").html(`<p>Tutor: ${tutor.User.firstName} + ${tutor.User.lastName}</p>
     <p>${tutor.tutorProfile}</p>`);
-    var sessions
+    const sessions = $("<div>").addClass("card col-sm-3 col-md-3");
+    const body = $("<div>").addClass("row card-body").append(tutorData)
+    body.append(sessions)
+    $("#availableTutors").append(body)
+    console.log(tutor.id)
+    const tutorid = tutor.id
       //var sessionData = listAvailableSession(tutor.id) //$("<div>").text("List of available Sessions");
-      $.get("/api/getTutorSessions/" + tutor.id).then(data => {
+       $.get("/api/getTutorSessions/" + tutorid).then(data => {
         var available = data.filter(s=> {return s.Student === null})
         //console.log(available)
-        sessions = $("<div>").addClass("card col-sm-3 col-md-3");
+        //sessions = $("<div>").addClass("card col-sm-3 col-md-3");
         available.forEach(e => {
           sessions.append($("<button>").addClass("btn btn-primary").text(sqlToJsDate(e.startTime).toLocaleString())
           
@@ -153,9 +155,9 @@ $(document).ready(async function () {
             
         })
         console.log(sessions)
-        var body = $("<div>").addClass("row card-body").append(tutorData)
-        body.append(sessions);
-        $("#availableTutors").append(body)
+        //var body = $("<div>").addClass("row card-body").append(tutorData)
+        //body.append(sessions);
+        //$("#availableTutors").append(body)
       })
       
     }
