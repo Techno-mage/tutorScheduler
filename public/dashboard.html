@@ -39,19 +39,19 @@
             <div class="container">
               <h3 class="display-3">Tutor</h3>
               
-              <hr class="my-2">
+              <!-- <hr class="my-2"> -->
 
               <div class="card descpt">
                 <h6 class="card-title"><u>Description</u></h6>
-                <div class="card-body">
+                
                   
                   
-                  <textarea class="card-text " name="message" rows="10" cols="30" id="tutorProfile"></textarea>
+                  <textarea class="card-body card-text " name="message" rows="10" cols="30" id="tutorProfile"></textarea>
                   
-                </div>
+              
                 <button type="button" class="btn btn-primary" onclick="saveTutorProfile()">update Profile</button>
               </div> 
-              
+              <div id="upSession">
               <br>
               <p><b>Your Upcoming Sessions:</b></p>
               <hr>
@@ -63,7 +63,7 @@
               <button type="button" class="btn btn-primary btn-lg addBut" data-toggle="modal" data-target="#modelId">
                 Add Session
               </button>
-
+            </div>
             </div>
           </div>
           
@@ -72,40 +72,41 @@
 
         
         <div class="tab-pane row" id="student"  role="tabpanel">
-          <div>Display student profile and allow student to update if necessary.
-            <form>
-              <textarea name="message" rows="10" cols="30" id="studentProfile"></textarea>
-              <br><br>
-              <input type="submit" onclick="saveProfile()">
-            </form>
-          </div>
-          <p><b>Your Upcoming Sessions:</b></p>
-          <hr>
-            <div class="row card-columns" id="StudentContent">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h3 class="display-4">Student</h3>
+              
+              <!-- <hr class="my-2"> -->
 
-            </div>
-          <div>A list of Tutor's and their available sessions. </div>
+              <div class="card stuDescpt">
+                <h6 class="card-title"><u>Description</u></h6>
+                
+                  
+                  
+                  <textarea class="card-body card-text " name="message" rows="10" cols="30" id="studentProfile"></textarea>
+                  
+              
+                <button type="button" class="btn btn-primary" onclick="saveProfile()">update Profile</button>
+              </div> 
+              <div id="upStuSession">
+              <br>
+              <p><b>Your Upcoming Sessions:</b></p>
+              <hr>
+              <div class="row card-columns" id="StudentContent">
+                
+               
 
-          <div id="availableTutors">
-            <div class="row card card-body">
-              <div class="col-sm-3 col-md-3">
-                <p>Tutor: Tutor name here</p>
-                <p>Tutor Profile Here.</p>
               </div>
-              <div class="col-sm-9 col-md-9">
-                <button class="button btn btn-primary ">
-                  Start time:
-                </button>
-                <button class="button btn btn-primary ">
-                  Start time:
-                </button>
-                <button class="button btn btn-primary ">
-                  Start time:
-                </button>
+              <p><b>Available Tutors:</b></p>
+              <hr>
+              <div class="row card-columns" id="availableTutors">
+                
+               
+
               </div>
-
+              
             </div>
-
+            </div>
           </div>
 
           
@@ -168,6 +169,29 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary"  onclick="sessionSignup()" data-dismiss="modal" >Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+      
+      <!-- Modal -->
+      <div class="modal fade" id="tutorSes" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="sesTitle">Available Sessions</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="availSes">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
             </div>
           </div>
         </div>

@@ -59,7 +59,16 @@ form.login {
   
   
 }
+.stuDescpt{
+  width:50%;
+  left:25%;
+  border-color: black;
+
+}
 .display-3{
+  text-align: center;
+}
+.display-4{
   text-align: center;
 }
 .card-title{
