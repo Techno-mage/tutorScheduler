@@ -9,7 +9,7 @@ $(document).ready(async function () {
       $(".display-4").text(data.firstName + " " + data.lastName)
       $(".descpt").empty();
       $("#upSession").empty();
-      $(".descpt").append($("<button>").addClass("btn btn-primary").text("Become a Tutor."))
+      $(".descpt").append($("<button>").addClass("btn btn-primary").text("Become a Tutor.").click(function(){signUpTutor(data.firstName)}));
     }
     
     //console.log(data.User.Tutor.id)
@@ -21,6 +21,7 @@ $(document).ready(async function () {
       $(".display-3").text(data.firstName + " " + data.lastName)
       $(".stuDescpt").empty();
       $("#upStuSession").empty();
+      $(".stuDescpt").append($("<button>").addClass("btn btn-primary").text("Become a Student.").click(function(){signUpStudent(data.firstName)}));
       
     }
 
@@ -32,6 +33,7 @@ $(document).ready(async function () {
       
         $("#tutorProfile").val(data.Tutor.tutorProfile)
         $(".display-3").text(data.firstName + " " + data.lastName)
+        console.log("this happened")
     }
     
     
@@ -95,6 +97,7 @@ $(document).ready(async function () {
 
   //Get available tutors. 
   $.get("/api/Tutors").then( data => {
+<<<<<<< HEAD
     //   console.log(data);
     // for (tutor of data){
     //     //console.log(tutor.User.firstName)
@@ -130,6 +133,9 @@ $(document).ready(async function () {
     //   $("#availableTutors").append(car)
 
     // }
+=======
+     
+>>>>>>> 84253cb95f2a86b75b182478a97f75a1a092c857
     console.log(data)
 
     for (tutor of data){
@@ -290,3 +296,30 @@ function sqlToJsDate(sqlDate) {
   return ddate;
 }
 
+function signUpTutor(first){
+  console.log("the others")
+  $.get("/api/users/"+first).then(function(data) {
+    $.post("/api/createTutor", {
+      UserId: data.id
+    }).then(function(data) {
+      window.location.replace("/dashboard");
+      
+      // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleLoginErr);
+  })
+  
+} 
+function signUpStudent(first){
+  console.log("that")
+  $.get("/api/users/"+first).then(function(data) {
+    $.post("/api/createStudent", {
+      UserId: data.id
+    }).then(function(data) {
+      window.location.replace("/dashboard");
+      
+      // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleLoginErr);
+  })
+}
