@@ -9,7 +9,7 @@ $(document).ready(async function () {
       $(".display-4").text(data.firstName + " " + data.lastName)
       $(".descpt").empty();
       $("#upSession").empty();
-      $(".descpt").append($("<button>").addClass("btn btn-primary").text("Become a Tutor."))
+      $(".descpt").append($("<button>").addClass("btn btn-primary").text("Become a Tutor.").click(function(){signUpTutor(data.firstName)}));
     }
     
     //console.log(data.User.Tutor.id)
@@ -21,10 +21,11 @@ $(document).ready(async function () {
       $(".display-3").text(data.firstName + " " + data.lastName)
       $(".stuDescpt").empty();
       $("#upStuSession").empty();
+      $(".stuDescpt").append($("<button>").addClass("btn btn-primary").text("Become a Student.").click(function(){signUpStudent(data.firstName)}));
       
     }
 
-    else if (data.Student && data.tutor){
+    else if (data.Student && data.Tutor){
         $("#student").val(data.Student.id)
         $("#studentProfile").val(data.Student.studentProfile)
         $(".display-4").text(data.firstName + " " + data.lastName)
@@ -32,6 +33,7 @@ $(document).ready(async function () {
       
         $("#tutorProfile").val(data.Tutor.tutorProfile)
         $(".display-3").text(data.firstName + " " + data.lastName)
+        console.log("this happened")
     }
     
     
@@ -95,55 +97,23 @@ $(document).ready(async function () {
 
   //Get available tutors. 
   $.get("/api/Tutors").then( data => {
-    //   console.log(data);
-    // for (tutor of data){
-    //     //console.log(tutor.User.firstName)
-    // var text;
-      
-    //   text = `Tutor: ${tutor.User.firstName} ${tutor.User.lastName}
-        
-    //     Profile:
-    //     ${tutor.tutorProfile}`
-    //     var car = $("<button>").addClass("btn btn-primary col-sm-3 col-md-3");
-    //     car.click(()=> {$('#tutorSes').val(tutor.id).modal()
-    //     console.log($("#tutorSes").val())
-    //     //$("#sesTitle").text(tutor.User.firstName+ " "+tutor.User.lastName)
-
-    //     $.get("/api/getTutorSessions/" + tutor.id).then(data => {
-
-    //         var available = data.filter(s=> {return s.Student === null})
-            
-
-    
-    
-    //       })
-    
-    
-    //     })
-        
-    //     //car.attr("tutorId", tutor.id);
-      
-    //   var details = $("<p>").text(text);
-    //   var body = $("<div>").addClass("card-body");
-    //   body.append(details)
-    //   car.append(body)
-    //   $("#availableTutors").append(car)
-
-      
-      
-
-    // }
+     
     console.log(data)
 
     for (tutor of data){
       var tutorData = $("<div>").addClass("col-sm-3 col-md-3").html(`<p>Tutor: ${tutor.User.firstName} + ${tutor.User.lastName}</p>
     <p>${tutor.tutorProfile}</p>`);
-    var sessions
+    const sessions = $("<div>").addClass("card col-sm-3 col-md-3");
+    const body = $("<div>").addClass("row card-body").append(tutorData)
+    body.append(sessions)
+    $("#availableTutors").append(body)
+    console.log(tutor.id)
+    const tutorid = tutor.id
       //var sessionData = listAvailableSession(tutor.id) //$("<div>").text("List of available Sessions");
-      $.get("/api/getTutorSessions/" + tutor.id).then(data => {
+       $.get("/api/getTutorSessions/" + tutorid).then(data => {
         var available = data.filter(s=> {return s.Student === null})
         //console.log(available)
-        sessions = $("<div>").addClass("card col-sm-3 col-md-3");
+        //sessions = $("<div>").addClass("card col-sm-3 col-md-3");
         available.forEach(e => {
           sessions.append($("<button>").addClass("btn btn-primary").text(sqlToJsDate(e.startTime).toLocaleString())
           
@@ -153,9 +123,9 @@ $(document).ready(async function () {
             
         })
         console.log(sessions)
-        var body = $("<div>").addClass("row card-body").append(tutorData)
-        body.append(sessions);
-        $("#availableTutors").append(body)
+        //var body = $("<div>").addClass("row card-body").append(tutorData)
+        //body.append(sessions);
+        //$("#availableTutors").append(body)
       })
       
     }
@@ -281,7 +251,37 @@ function sqlToJsDate(sqlDate) {
   //format of sqlDateArr4[] = ['ss','msZ']
   var sSecond = sqlDateArr4[0];
   //var sMillisecond = sqlDateArr4[1];
+  var ddate = new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond);
+  ddate.setTime(ddate.getTime() - (ddate.getTimezoneOffset()*60*1000))
+  //console.log(ddate)
 
-  return new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond);
+  return ddate;
 }
 
+function signUpTutor(first){
+  console.log("the others")
+  $.get("/api/users/"+first).then(function(data) {
+    $.post("/api/createTutor", {
+      UserId: data.id
+    }).then(function(data) {
+      window.location.replace("/dashboard");
+      
+      // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleLoginErr);
+  })
+  
+} 
+function signUpStudent(first){
+  console.log("that")
+  $.get("/api/users/"+first).then(function(data) {
+    $.post("/api/createStudent", {
+      UserId: data.id
+    }).then(function(data) {
+      window.location.replace("/dashboard");
+      
+      // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleLoginErr);
+  })
+}
