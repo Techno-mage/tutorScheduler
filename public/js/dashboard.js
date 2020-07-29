@@ -242,7 +242,7 @@ function sqlToJsDate(sqlDate) {
   var sMonth = (Number(sqlDateArr1[1]) - 1).toString();
   var sqlDateArr2 = sqlDateArr1[2].split("T");
   //format of sqlDateArr2[] = ['dd', 'hh:mm:ss.msZ']
-  var sDay = (Number(sqlDateArr2[0]) - 1).toString();
+  var sDay = (Number(sqlDateArr2[0])).toString();
   var sqlDateArr3 = sqlDateArr2[1].split(":");
   //format of sqlDateArr3[] = ['hh','mm','ss.msZ']
   var sHour = sqlDateArr3[0];
