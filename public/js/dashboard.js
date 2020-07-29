@@ -101,7 +101,7 @@ $(document).ready(async function () {
     console.log(data)
 
     for (tutor of data){
-      var tutorData = $("<div>").addClass("col-sm-3 col-md-3").html(`<p>Tutor: ${tutor.User.firstName} + ${tutor.User.lastName}</p>
+      var tutorData = $("<div>").addClass("col-sm-3 col-md-3").html(`<p>Tutor: ${tutor.User.firstName} ${tutor.User.lastName}</p>
     <p>${tutor.tutorProfile}</p>`);
     const sessions = $("<div>").addClass("card col-sm-3 col-md-3");
     const body = $("<div>").addClass("row card-body").append(tutorData)
@@ -252,7 +252,7 @@ function sqlToJsDate(sqlDate) {
   var sSecond = sqlDateArr4[0];
   //var sMillisecond = sqlDateArr4[1];
   var ddate = new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond);
-  ddate.setTime(ddate.getTime() - (ddate.getTimezoneOffset()*60*1000))
+  //ddate.setTime(ddate.getTime() - (ddate.getTimezoneOffset()*60*1000))
   //console.log(ddate)
 
   return ddate;
